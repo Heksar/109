@@ -1,0 +1,115 @@
+# Friday 1h - Lecture 4, Sept. 18, 2020
+# -------------------------------
+# 18. Input and casting string to int, float to int
+# 19. Iteration: while loop
+# 20. 2.4 Iteration: while loop n**2 example, number to string conversion str(n)
+# 21. 2.4 while True ...  and break statement
+# ------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e18.py
+# 2.3.1 Input and casting string to int, float to int
+# ----------------------------------------------------------
+# input(prompt)
+# example: input name and age, and ask if really that age
+# show how to get rid of the blank before the '?'
+# ---------------------------------------------------
+# String conversion to int ... print twice the age
+# Note: input() returns a string
+# to change a string that looks like an int, like, '4',
+# to an int, use casting: int('4')
+# What is int(4.5)  and int('4.5')
+# -----------------------------------
+# in one line convert '4.5' to 4
+# -----------------------------------
+name = input('Name: ')
+age = input('age: ')
+print('Hello ', name, 'Are you really ', age, '?')
+print('Hello ' + name +  '.  Are you really ' + age + '?')
+print('Twice your age is ' + 2 * age)
+age = int(age)
+print('Twice your age is ' + str(2 * age))
+i = int(float('4.5'))
+print('4.5 brought to an int is', i)
+
+
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e19.py
+# 2.4 Iteration: while loop
+# ----------------------------------------------------------
+# a) Try to write a program that prints n letters,
+#     where the user specifies n:
+#     a series of if-elif  statements won't work
+# -------------------
+letter = 'A'
+n = int(input('n = '))
+if n == 0 :
+    print()
+elif n == 1 :
+    print('A')
+elif n == 2 :
+    print('AA') 
+else :
+    print(n * 'A')
+print('------------------------------------')
+# b) Actually you know a way ... what is it?
+# c) Use a while loop
+i = 0
+while i < n :
+    print('A', end = '')
+    i = i + 1
+print()
+# ------------------------------------------------
+# A while loop is one form of iteration in python
+#----------------------------------------------------
+# while condition is True :
+#    block
+#----------------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e20.py
+# 2.4 Iteration: while loop n**2 example, number to string conversion str(n)
+# ----------------------------------------------------------
+# Read n from the user and calculate n squared the hard way by
+# adding n to itself n times
+# Show what happens if n is negative.
+# Show how to print the answer with concatenation.
+# You may need str(n) which converts int to str
+# ------------------------------------------------------
+n = int(input('n = '))
+i = 0
+sum = 0
+while i < n :
+    sum = sum + n
+    i = i + 1
+
+print(str(n) + '**2 = ' + str(sum) + ' should be ' + str(n ** 2))
+#!/usr/bin/python3
+# ----------------------------------------------------------e21.py
+# 2.4 while True ...  and break statement
+# ----------------------------------------------------------
+# a break statement interrupts the loop
+# what about a break inside a nested loop?
+# ----------------------------------------------------------
+# Write a while loop to find the first positive integer
+# that is divisible by m, n
+# where those values are read from the user
+# Use the <while True ... break>   idiom
+# ------------------------------------------------------
+n = int(input('First divisor? '))
+m = int(input('Second divisor? '))
+i = 1
+
+while True :
+    if i % m == 0 and i % n == 0 :
+        break
+    i = i + 1
+
+print('first positive integer divisible by ', m, n, ' is ', i)
+# alternative
+i = 1
+while i % m != 0 or i % n != 0 :
+    i = i + 1
+
+print('first positive integer divisible by ', m, n, ' is ', i)
+

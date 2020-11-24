@@ -1,0 +1,207 @@
+# ---------------------------------------------------------
+# Outline for Lecture 3, Tuesday Sept. 15, 2020
+# Finishing Chapter 2 on branching and iteration
+# ----------------------------------------------------------e12.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# So far we wrote straight-line programs, like the one in e9.py
+# Next we add branching statements, so we can make choices
+# ----------------------------------------------------------
+# An if statement has the following structure (p. 15 Guttag)
+#------------------------------------------
+# a test
+# a block of code to be executed if the test is True
+# an optional block to be done if the test is False
+# ------------------------------------------
+# The format is:
+# if boolean expression :
+#    block
+# else :
+#    block
+# ------------------------------------------
+# Write a program to say whether x is even or odd
+# and finish by printing 'all done'
+# ------------------------------------------
+
+
+# ------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e13.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# What does the \ do?
+# ----------------------------------------------------------
+# example
+
+
+# What is nesting?
+
+# ----------------------------------------------------------
+# Write a program of nested if statements
+# that reports how divisible x is by 2 and 3
+#------------------------------------------
+    
+
+# ------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e14.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# Compound Boolean Expressions
+# ----------------------------------------------------------
+# Write a program using compound boolean expressions
+# that reports which out of x, y, z is the smallest
+#----------------------------------------------------------
+
+
+
+# ------------------------------------------
+# elif is short for else if
+# and is required
+# ------------------------------
+# Constant time program
+# takes time less than some constant k depending on length of program
+# Are branching programs constant time?
+# ------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e15.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# Computational complexity
+# -------------------------------
+# Is it possible to write a constant time program
+# that adds up the votes for candidates A, B, C in an election,
+# where the number of voters, n, is variable?
+votes = 'AABBCCAABCABCCCCAA'
+# Write a solution using the count() function of str
+
+
+
+
+# -----------------------------------------------p. 18 finger exercise
+# Write a program that examines variables x, y, z
+# and prints the largest odd number among them.
+# If none are odd, then print a message to that effect.
+#----------------------------------------------------------
+
+
+            
+#!/usr/bin/python3
+# ----------------------------------------------------------e16.py
+# 2.3 Strings and Input
+# ----------------------------------------------------------
+# Literal: a literal is a representation of an object in your program
+#   like 2, 3.5, and 'abc'
+# 'abc' is string literal, and it can be written with double quotes "abc"
+# ----------------------------------------------------------
+# In the interpreter shell type the following expressions
+# 'a', 3 * 4, 3 * 'a', 3 + 4, 'a' + 'a', 
+
+# Overloaded + operator: addition and concatenation
+# 'a', 'a' + 'a', 5 + 9
+#  4 + 'a'     things that don't work
+
+# Overloaded * operator: multiplication and repetition
+# 4 * 'a', 'a' * 4, 
+# 'a' * 'a'     examples that don't work
+# --------------------------------------------------
+
+# Type checking is better in Python 3 than Python 2
+# What is the value of each expression below
+# 'a' < 'b'        'a' < 'A'         ord('a')
+# False < True          True < False
+# '4' < 3
+# False < 4
+#!/usr/bin/python3
+# ----------------------------------------------------------e17.py
+# 2.3 Strings and Input
+# ----------------------------------------------------------
+# All sequence types (like str) have the following operations:
+# length, index, slicing
+# ----------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e18.py
+# 2.3.1 Input
+# ----------------------------------------------------------
+# input(prompt)
+# example: input name and do something 
+
+
+
+# show how to get rid of the blank before the '?'
+# ---------------------------------------------------
+# String conversion to int
+# example input age and print twice age
+
+
+# input() returns a string
+# to change a string that looks like an int, like, '4',
+# to an int, use casting: int('4')
+# What is int(4.5)  and int('4.5')
+# -----------------------------------
+# in one line convert '4.5' to 4
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e19.py
+# 2.4 Iteration
+# ----------------------------------------------------------
+# Try to write a program that prints n letters,
+# where the user specifies n:
+
+
+# this won't work
+# Actually you know a way ... what is it?
+
+# ------------------------------------------------
+# A while loop is one form of iteration in python
+#----------------------------------------------------
+# while condition is True :
+#    block
+#----------------------------------------------------
+# Write a while loop to solve the above problem
+# -----------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e20.py
+# 2.4 Iteration
+# ----------------------------------------------------------
+# Read n from the user and
+# Calculate n squared the hard way by
+# adding n to itself n times
+# Show what happens if n is negative.
+# Show how to print the answer with concatenation.
+# You may need str(n) which converts int to str
+# ------------------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e21.py
+# 2.4 Iteration  and break
+# ----------------------------------------------------------
+# a break statement interrupts the loop
+# what about a break inside a nested loop?
+# ----------------------------------------------------------
+# Write a while loop to find the first positive integer
+# that is divisible by m, n
+# where those values are read from the user
+# Use the <while True ... break>   idiom
+# ------------------------------------------------------
+n = int(input('First divisor? '))
+m = int(input('Second divisor? '))
+#!/usr/bin/python3
+# ----------------------------------------------------------e22.py
+# 2.4 Iteration -- 
+# ----------------------------------------------finger exercise p. 24
+# Ask the user for 10 integers, and
+# print the largest odd number entered.
+# If no odd number, then print message to that effect
+# ----------------------------------------------------------
+
+
+
+# Suppose you wanted to use random numbers instead of user input
+# import math
+# dir(math)
+# import random
+# dir(random)
+# ---------------------------------------------------------

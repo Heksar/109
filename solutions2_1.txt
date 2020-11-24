@@ -1,0 +1,202 @@
+#!/usr/bin/python3
+# ----------------------------------------------------------e12.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# So far we wrote straight-line programs, like the one in e9.py
+# Next we add branching statements, so we can make choices
+# ----------------------------------------------------------
+# An if statement has the following structure (p. 15 Guttag)
+#------------------------------------------
+# a test
+# a block of code to be executed if the test is True
+# an optional block to be done if the test is False
+# ------------------------------------------
+# The format is:
+# if boolean expression :
+#    block
+# else :
+#    block
+# ------------------------------------------
+# Write a program to say whether x is even or odd
+# and finish by printing 'all done'
+# ------------------------------------------
+x = 6
+if x % 2 == 0 :
+    print(x, 'is even')
+else :
+    print(x, 'is odd')
+print('all done')
+
+
+# ------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e13.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# What does the \ do?
+# ----------------------------------------------------------
+# example
+a = 5 + 2 / 6 ** \
+3
+print(a, 'this illustrates backslach\nwhich allows continuation')
+# What is nesting?
+
+# ----------------------------------------------------------
+# Write a program of nested if statements
+# that reports how divisible x is by 2 and 3
+#------------------------------------------
+x = 9
+x = 0
+x = 9
+x = 8
+x = 7
+if x % 2 == 0 :
+    if x % 3 == 0 :
+        print(x, 'is divisible by both 2 and 3')
+    else :
+        print(x, 'is divisible by only 2')
+elif x % 3 == 0 :
+    print(x, 'is divisible by only 3')
+else :
+    print(x, 'is not divisible by either 2 or 3')
+
+
+# ------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e14.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# Compound Boolean Expressions
+# ----------------------------------------------------------
+# Write a program using compound boolean expressions
+# that reports which out of x, y, z is the smallest
+#----------------------------------------------------------
+x, y, z = 5, 2, 9
+x, y, z = 5, 12, 9
+x, y, z = 15, 12, 9
+x, y, z = 5, 2, 2
+
+if x <= y and x <= z :
+    print(x, 'is the smallest out of ', x, y, z)
+elif y <= x and y <= z :
+    print(y, 'is smallest of', x, y, z)
+else :
+    print(z, 'is smallest of', x, y, z)
+
+
+# ------------------------------------------
+# elif is short for else if
+# and is required
+# ------------------------------
+# Constant time program
+# takes time less than some constant k depending on length of program
+# Are branching programs constant time?
+# ------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e15.py
+# 2.2 Branching Programs
+# ----------------------------------------------------------
+# Computational complexity
+# Constant time : time proportional to the number of statements
+# -------------------------------
+# Is it possible to write a constant time program
+# that adds up the votes for candidates A, B, C in an election,
+# where the number of voters, n, is variable?
+votes1 = 'AABBCCAABCABCCCCAA'
+votes2 = votes1 + votes1
+# Write a solution using the count() function of str
+# String is a sequence type, meaning it has these three operations:
+# length, index, slice
+n = len(votes2)
+print('There are ', n, 'votes: ', votes2)
+countA = votes2.count('A')
+countB = votes2.count('B')
+countC = votes2.count('C')
+print('There are ', countA, countB, countC, "A's, B's, C's, respectively")
+# Question is this a constant time program?
+# Answer: no, since there is a hidden loop inside the count function
+# It is a linear time program
+
+# -----------------------------------------------p. 18 finger exercise
+# Write a program that examines variables x, y, z
+# and prints the largest odd number among them.
+# If none are odd, then print a message to that effect.
+#----------------------------------------------------------
+x, y, z = 22, 100, 2    # the answer is 'no odd number'
+x, y, z = 22, 17, 3     # 17 is the largest odd number
+foundodd = False
+largest = None
+if x % 2 == 1 : # it is odd
+    foundodd = True
+    largest = x
+if y % 2 == 1 : # y is odd
+    if foundodd :
+        if y > largest :
+            largest = y
+    else : # we did not find an odd number yet
+        foundodd = True
+        largest = y  # the only odd number so far
+if z % 2 == 1 : # z is odd
+    if foundodd :
+        if z > largest :
+            largest = z
+    else : # we did not find an odd number yet
+        foundodd = True
+        largest = z
+if not foundodd :
+    print('No odd number')
+else :
+    print('The largest odd number was', largest)
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e16.py
+# 2.3 Strings and Input
+# ----------------------------------------------------------
+# Literal: a literal is a representation of an object in your program
+#   like 2, 3.5, and 'abc'
+# 'abc' is string literal, and it can be written with double quotes "abc"
+# ----------------------------------------------------------
+# In the interpreter shell type the following expressions
+# 'a', 3 * 4, 3 * 'a', 3 + 4, 'a' + 'a', 
+
+# Overloaded + operator: addition and concatenation
+# 'a', 'a' + 'a', 5 + 9
+#  4 + 'a'     things that don't work
+
+# Overloaded * operator: multiplication and repetition
+# 4 * 'a', 'a' * 4, 
+# 'a' * 'a'     examples that don't work
+# --------------------------------------------------
+
+# Type checking is better in Python 3 than Python 2
+# What is the value of each expression below
+# 'a' < 'b'        'a' < 'A'         ord('a')
+# False < True          True < False
+# '4' < 3
+# False < 4
+#!/usr/bin/python3
+# ----------------------------------------------------------e17.py
+# 2.3 Strings and Input
+# ----------------------------------------------------------
+# All sequence types (like str) have the following operations:
+# length, index, slicing
+# ----------------------------------------------------------
+a = 'abcdefg'
+print(len(a))
+print(a[0], 'indexing, giving the first letter of ', a)
+print(a[3], 'indexing, giving the fourth letter of ', a)
+print(a[6], 'indexing, giving the seventh letter of ', a)
+print(a[-1], 'indexing, giving the last letter of ', a)
+print(a[-2], 'indexing, giving the second last letter of ', a)
+# print(a[len(a)])  gives index out of range error
+# slicing
+print(a[0:3], 'slicing, giving first three letters of ', a)
+print(a[2:5], 'slicing, giving three letters of ', a)
+print(a[:4], 'slicing, giving first four letters of ', a)
+print(a[3:], 'slicing, giving the rest starting at 3 i.e. d ', a)
+print(a[:], 'slicing, giving everything ', a)
+print(a[2:6:2], 'slicing, with an increment of 2 ', a)
+print(a[2:6:4], 'slicing, with an increment of 4 ', a)
+print(a[::-1], 'the reverse ', a)
