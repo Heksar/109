@@ -1,0 +1,181 @@
+#!/usr/bin/python3
+# ---------------------------------------------------------e1.py
+# CPS109, Tuesday, Sept. 8, 2020
+# ------------------------------
+#---------------------------------------------------------------
+#   Chapter 1 notes
+#---------------------------------------------------------------
+#---------------------------------------------------------------
+# 1. Discuss course outline
+#---------------------------------------------------------------
+#---------------------------------------------------------------
+# 2. Chapter 1:
+# Introduction to Computation and Programming Using Python, 2nd Edition
+# by JV Guttag
+
+# 1. Computer does just two basic things:
+#   performs calculations
+#   stores results
+
+# 2. Fast and Lots
+
+
+# 3. Course purpose: to get you comfortable with computational thinking
+
+
+# 4. Two kinds of Knowledge: declarative (facts) and imperative (instructions)
+
+#    Example of declarative knowledge:  
+#    "The square root of x is y where y * y == x"
+
+# 5. Example of Imperative : Hero(n) of Alexandria -- square root
+#   algoirthm how to do calculate the square root
+#                  g                                                x
+#  ------------------------------------------------------------------
+#  0  5    12.5    20                                              100
+#    x/g         1. guess g
+#                2. check g*g, stop if close enough
+#                3. otherwise average g and x/g 
+#                4. use average as the next g and go to 2.
+#    
+# 6. Example of doing square root -- we did the above algorithm in the
+#    Python shell
+
+#  The Hero Algorithm is called a "guess and check" algorithm
+
+# "Ambiguity" is the key difference between a recipe and an algorithm
+
+# More formally,
+# "An algorithm is a finite list of instructions that describe
+#  a computation that when executed on a set of inputs will proceed through
+#  a set of well-defined states and eventually produce an ouput."
+#----------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------------e2.py
+# 7. Short History of Early Computers, Ada Lovelace ... first programmer
+
+# 1833 Babbage designed programmable computer
+# 1936 Turing Universal Computing Machine (stored program computer)
+# 1938 US Navy electromechanical analog computer
+# 1941 Atanasoff and Berry -- fixed program computer
+# 1944 Colossus .. first electronic digital programmable computer
+
+#https://www.computerhistory.org/timeline/computers/#169ebbe2ad45559efbc6eb35720d0b9f
+
+# Programming Language
+
+# 8. Church - Turing Thesis
+# anything computable is computable by the Universal Turing Machine
+
+# 9. Halting Program  Q(P, I)
+# For the following simple program is easy to answer whether
+# the program halts for a given input.
+
+def halt(x) :
+    while x < 3 :
+        print('hello')
+        x = x + 1
+halt(2)
+
+# Turing set up a recursive type of example, something like Q(Q, Q)
+# where the supposition that the halting program Q exists results in
+# a contradition.  Thus he proved that Q cannot exist.
+
+# 10. Turing Completeness: that a programming language can do all
+# that a Turing Machine can do.
+
+# 11. All modern PL's are Turing Complete.
+
+# 12. There are hundreds of languages, for example:
+
+# MATLAB
+# C
+# PHP
+# Python
+
+# Web site TIOBE shows which PL's are most popular or used.an
+
+# 13. Programming language has
+
+# Primitive constructs -->
+#   3, True, =, -
+# Syntax  --> x = 3 is good syntax     3 = x  bad syntax
+#      y = x++
+#    x++ is bad syntax in Python
+#  x = x + 1  good syntax
+#  x += 1  good syntax
+# Static Semantics -->
+#      Give an example in Python:
+#      x = 14
+#      y = x / 3  is okay
+#      y = b / 3  is not okay if b has not been assigned a value
+
+# Semantics
+
+# Multiple meanings, an example of ambiguity in English:
+#   I cannot praise him too highly.
+
+# Programming Language design is such that each valid statement has only
+# one meaning.
+
+# Possible Errors
+
+# Syntax
+# Static Semantics  whether the statement makes sense in context
+# Semantics of program is the meaning of your program
+# Run time error
+
+# Possible results of a run time error
+# The program never stops
+# or crashes
+# or does not do what you thought or meant (logic error)
+
+#!/usr/bin/python
+# ------------------------------------------------------e3.py
+# Chapter 2
+
+# Programming Language can be low-level   --  machine language, assembler
+#        or high-level  --  readable 
+
+# Programming Language can be general -- Python, Java, C
+#      or for a particular application domain -- PHP 
+
+# Programming Language can be interpreted -- Python, Java 
+#    or  compiled -- C   where the language changed to machine before running
+
+# The textbook and Course use Python but ...
+#   they are not about Python;
+#   the are rather about ... computational thinking
+#
+
+# 2.1 Basic elements of Python
+#
+# program -- sequence of definitions and commands
+
+# Example command
+x = 3
+
+# Example definition
+
+def hello() :
+    print("Hello World")
+
+# Python interpreter (also called shell)
+#       evaluates the defintions
+#       executes the program
+
+# Start a shell and following along
+
+# Example of print statement, 1 arg or many
+print(1)
+print(1, 2, 3, 'blue')
+
+# Objects are what the program manipulates
+
+# Objects can be:
+# Scalar:
+# (four kinds): int float bool none
+#    3    3.5   True    False     none
+
+# Nonscalar: such as a string 'blue'
+

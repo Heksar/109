@@ -1,0 +1,150 @@
+# ---------------------------------------------e3
+# Objects are what the program manipulates
+
+# Objects can be:
+
+# Scalar: indivisible, atomic
+# (four kinds): int, float, bool (True, False), None
+
+
+# Nonscalar: are composite, like 'aba'
+
+# literals represent objects in the program
+
+# examples (scalar, nonscalar)
+
+# Expression -- combination of ...
+
+
+# Objects have types
+
+# type() built in function
+# ----------------------------------------------------------e4.py
+
+# expressions have value
+# expressions are usually combinations of : operators and objects
+
+# example a == b   3+ 2
+
+# >>>               is the shell prompt
+
+# Operators for use on int
+
+# i + j
+
+# i - j
+
+# i * j
+
+# i // j
+
+# i / j
+
+# i % j
+
+# i ** j
+# ---------------------------------------e5.py
+# comparison operators
+
+# i == j
+
+# i != j
+
+# i > j
+
+# i >= j
+
+# i < j
+
+# i <= j
+
+
+# precedence ... as usual
+
+# 3 + 4 ** 2
+# --------------------------------------------------e6.py
+# primitive operators on bool
+
+# a and b
+
+# a or b
+
+# not a
+# --------------------------------------------------e7.py
+# Variables and assignment
+
+# Example:
+
+pi = 3
+radius = 11
+area = pi * (radius ** 2)
+print('area = ', area)
+
+
+# What happens when reset radius:
+radius = 22
+print('area now = ', area)
+# Variable is just a name
+
+# Assignment associates RHS with name on LHS
+# example
+
+# --------------------------------------------------e8.py
+# Naming is important
+# Example with diameter and area
+
+# Variable names: with upper, lower, digit, _
+# but can not start with digit
+
+# Reserved words, keywords
+
+# and, as, assert, break,
+# class, continue,
+# def, del
+# elif, else, except
+# False, finally, for, from
+# global
+# if, import, in, is
+# lambda
+# None
+# nonlocal, not
+# or
+# pass
+# raise, return
+# True
+# try
+# while, with
+# yield
+# --------------------------------------------------e9.py
+# Comments also help readability
+# anything after '#' on a line is a comment
+
+# Example from text, using comments
+# Program to find the difference in area of unit square and unit circle
+side = 1 # side of unit square
+radius = 1 # radius of unit circle
+areaSquare = side * side
+pi = 3.1415
+areaCircle = pi * radius ** 2
+difference = areaSquare - areaCircle
+print('Difference in areas:', difference)
+# --------------------------------------------------e10.py
+# Multiple assignments
+
+
+# allows simple swapping
+
+
+# ------------------------------------------------------e11.py
+# IDE  Integrated Development Environment (p. 15)
+# have:
+
+# text editor
+# a shell with syntax highlighting, and
+# an integrated debugger
+
+#http://docs.python.org/library/idle.html/
+#https://store.continuum.io/cshop/anaconda/
+#https://www.enthought.com/products/canopy/
+
+#pycharm

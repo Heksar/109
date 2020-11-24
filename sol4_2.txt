@@ -1,0 +1,104 @@
+# ----------------------------------------------------------e55.py
+#          Lecture 8 Solutions October 2, 2020
+# ----------------------------------------------------------e55.py
+#!/usr/bin/python3
+from math import pi
+# ----------------------------------------------------------e55.py
+# Chapter 4: Functions: dynamics, example areaOfCircle()
+# ------------------------------------------------------------
+# Write a function to compute the area of a circle
+# -------------------------------------------------------------
+def areaOfCircle(radius) :
+    # pi = 3.1415
+    return pi * radius * radius
+
+area = areaOfCircle(1)
+print('radius = 1 and area = ', area)
+# -----------------------------------------------------------------
+# Talk about:
+# return statement:
+# 1. Can you use return in a loop?  Try it with perfectcuberoot function.
+# 2. A function call is an expression
+# 3. A function call has a value -- what is the value of areaOfCircle(3)?
+# -----------------------------------------------------------------
+def perfectcuberoot(n) :
+    ans = None
+    for guess in range(n + 1) :
+        if guess ** 3 == n :
+            return guess
+        if guess ** 3 > n :
+            break
+    return ans
+
+for i in range(9) :
+    print('i = ', i, 'cube root = ', perfectcuberoot(i))
+#!/usr/bin/python3
+# ----------------------------------------------------------e56.py
+# Chapter 4: Functions: return value, example hello()
+# ------------------------------------------------------------
+# Write a function to print Hello, with no parameters
+# -------------------------------------------------------------
+def hello() :
+    print('Hello World')
+    exit(0)
+    #quit()
+    print('Have a nice day')
+
+a = hello()
+print('a = the value of the function = ', a)
+b = hello
+b()
+# -----------------------------------------------------------------
+# Talk about:
+# return statement:
+# 1. A function call is an expression
+# 2. A function call has a value -- what is the value of hello()
+# 3. If there is no return statement, then when does the function end?
+# -----------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e57.py
+# Chapter 4: Functions: return value, example bye()
+# ------------------------------------------------------------
+# Write a function to print Goodbye, with no parameters,
+# and a return statement.
+# -------------------------------------------------------------
+def bye() :
+    print('bye')
+    exit(4)
+    #quit(5)
+    return
+    print('have a nice day')
+
+bye()
+bye()
+
+# -----------------------------------------------------------------
+# Talk about:
+# return statement:
+# 1. A function call is an expression and therefore has a value
+# -----------------------------------------------------------------
+# 2. What is the value of bye()
+# -----------------------------------------------------------------
+#    Point of execution is the next instruction to be executed.
+# 3. When the function ends, to where is the point of execution transferred?
+# -----------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e58.py
+# Chapter 4: Functions: binding of formal parameters, example hello(name)
+# ------------------------------------------------------------
+# Write a function to return string "Hello X", where X is the given name
+# -------------------------------------------------------------
+def hello(first, last, reverse = False) :
+    if reverse :
+        print('Hello ', last, first)
+    else :
+        print('Hello ', first, last)
+
+hello('Sadaf', 'Mustafiz', False)
+hello('Sadaf', 'Mustafiz', True)
+hello('Sadaf', 'Mustafiz')
+# -----------------------------------------------------------------
+# Talk about:
+# default parameters which become optional during the call to the function
+# -----------------------------------------------------------------
+

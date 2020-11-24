@@ -1,0 +1,185 @@
+# ---------------------------------------------e3
+# Objects are what the program manipulates
+
+# Objects can be scalar or nonscalar
+
+# Scalar: indivisible, atomic
+# (four kinds): int, float, bool (True, False), None
+print(3, type(3))
+print(3.3, type(3.3))
+print(True, type(False))
+print(None, type(None))
+
+# Nonscalar: are composite, like 'aba'
+print('abcdefg', type('abcdefg'))
+# literals represent objects in the program
+
+# examples (scalar, nonscalar)
+
+# Expression -- combination of ...
+a = 3
+print(a + 3)
+
+
+# Objects have types
+
+# type() built in function
+# ----------------------------------------------------------e4.py
+
+# expressions have value
+# expressions are usually combinations of : operators and objects
+
+# examples:
+# a == b
+# 3 + 2
+a = 3
+b = (a == 2)
+print(b)
+# >>>               is the shell prompt
+
+# Operators for use on int
+
+# i + j
+
+# i - j
+
+# i * j
+
+# i // j
+print(10 // 3)
+# i / j
+print(10 / 3)
+# i % j
+print(10 % 3)
+# i ** j
+print(3 ** 4)# ---------------------------------------e5.py
+# comparison operators
+
+# i == j
+
+
+# i != j
+print(3 != 4)
+
+# i > j
+
+# i >= j
+a = 5
+print(3 < a < 7)
+
+# i < j
+
+# i <= j
+
+
+# precedence ... as usual
+
+print(3 + 4 ** 2)
+print(3 + (4 ** 2))
+print(3 < 5 and 5 < 7)
+# --------------------------------------------------e6.py
+# primitive operators on objects of type bool
+
+# a and b
+
+# a or b
+
+# not a
+print(not True)
+print(True and 5)
+print(False and 5)
+a = True + 5
+print(a)# --------------------------------------------------e7.py
+# Variables and assignment
+
+# Example:
+
+pi = 3
+radius = 11
+area = pi * (radius ** 2)
+print('area = ', area)
+
+
+# What happens when we reassign radius:
+radius = 22
+print('area now = ', area)
+# Variable is just a name
+
+# Assignment associates RHS with name on LHS
+# Assignment 'binds' the variable to the object
+# example
+
+# --------------------------------------------------e8.py
+# Naming is important
+# Example with diameter and area
+# -------------------Which is better
+
+a = 3.14
+b = 10
+c = a * b ** 2
+# -----------------or this:
+pi = 3.14
+diameter = 10
+area = pi * (diameter ** 2)
+print('area = ', area)
+
+
+#---------------------or this:
+
+# Variable names can have uppercase letters, lowercase letters, digits, and _
+# but can not start with digit
+
+# Reserved words, keywords
+
+# and, as, assert, break,
+# class, continue,
+# def, del
+# elif, else, except
+# False, finally, for, from
+# global
+# if, import, in, is
+# lambda
+# None
+# nonlocal, not
+# or
+# pass
+# raise, return
+# True
+# try
+# while, with
+# yield
+# --------------------------------------------------e9.py
+# Comments also help readability
+# anything after '#' on a line is a comment
+
+# Example from text, using comments
+# Program to find the difference in area of unit square and unit circle
+side = 1      # side of unit square
+radius = 1    # radius of unit circle
+areaSquare = side * side
+pi = 3.1415
+areaCircle = pi * radius ** 2
+difference = areaSquare - areaCircle
+print('Difference in areas:', difference)
+# --------------------------------------------------e10.py
+# Multiple assignments
+a, b = 3, 4
+print('a = ', a, ', and b = ', b)
+
+# allows simple swapping
+a, b = b, a
+print('a = ', a, ', and b = ', b)
+
+# ------------------------------------------------------e11.py
+# IDE  Integrated Development Environment (p. 15)
+# have:
+
+# text editor
+# a shell with syntax highlighting, and
+# an integrated debugger
+
+#http://docs.python.org/library/idle.html/
+#https://store.continuum.io/cshop/anaconda/
+#https://www.enthought.com/products/canopy/
+
+#pycharm

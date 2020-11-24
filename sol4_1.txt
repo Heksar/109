@@ -1,0 +1,387 @@
+#                Solutions 36-55 from Lecture 7 
+#  Also some exercises were skipped, left for you to do.
+# --------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e36.py
+# 3.3 Approximation Solutions and Bisection Search: square root
+# ------------------------------------------------------------
+# Finding the square root of a number by exhaustive enumeration
+# takes too long
+# ------------------------------------------------------------
+# Bisection search is the way we look up a word in a paper dictionary.
+# ------------------------------------------------------------
+# Assume that you know the root, sqrt(x) is between low = 0 and high
+# and you guess in the middle:
+# ------------------------------------------------------------
+# low                        guess                          high
+# 0                              12                              24
+# -------------------------------------------------------------
+# Now you can square guess to see if guess is
+# close enough -> stop
+# too low ->      make a new guess after moving low to guess
+# too high ->     make a new guess after moving high to guess
+# -----------------------------------------------------------------
+# Write the program for finding sqrt(x) using bisection search
+# Note: high starts as x or 1.0, whichever is bigger
+# Try
+# x = 0.25
+# x = 25
+# --------------------------------------------------------------
+x = 0.75  # 0.5 is the square root of 0.25
+epsilon = 0.01
+count = 0
+low = 0
+high = max(1, x)
+guess = (low + high) / 2
+count = 1
+while abs(guess ** 2 - x) > epsilon :
+    print(count, low, high, guess, guess ** 2, x)
+    if guess ** 2 > x :
+        high = guess
+    else :
+        low = guess
+    guess = (low + high) / 2
+    count = count + 1
+    if count > 15 :
+        break
+print(guess, 'is close enough to the square root of', x)
+# ---------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e37.py
+# 3.3 Approximation Solutions and Bisection Search: cube root
+# ------------------------------------------------------------
+# p. 34 Finger exercise:
+# 1. What happens in e36 if x = -25?
+# ------------------------------------------------------------
+# 2. Modify the square root code to do cube root
+#    and so that it works with negative numbers.
+#    Hint: modify the low variable.
+# Try
+# x = 0.25
+# x = -25
+# -----------------------------------------------------------------
+x = 0.75  # 0.5 is the square root of 0.25
+x = float(input('x = '))
+negate = False
+n = 3
+if x < 0 :
+    if n % 2 == 1 :
+        negate = True
+        x = - x
+    else :
+        print('We cannot do the root of a negative number')
+        exit(0)
+
+epsilon = 0.01
+count = 0
+low = 0
+high = max(1, x)
+guess = (low + high) / 2
+count = 1
+while abs(guess ** n - x) > epsilon :
+    print(count, low, high, guess, guess ** n, x)
+    if guess ** n > x :
+        high = guess
+    else :
+        low = guess
+    guess = (low + high) / 2
+    count = count + 1
+    if count > 15 :
+        break
+if negate :
+    guess = - guess
+print(guess, 'is close enough to the ', n, 'th root of', x)
+#!/usr/bin/python3
+# ----------------------------------------------------------e39.py
+# 3.4 Floats and precision
+# ------------------------------------------------------------
+# Write a for loop to add 0.1 to sum 10 times and print the result
+# ------------------------------------------------------------
+# Why is the result not 1?
+# -----------------------------------------------------------------
+sum = 0
+for i in range(10) :
+    sum = sum + 0.1
+print('sum = ', sum, "10 * 0.1 = ", 10 * 0.1)
+#!/usr/bin/python3
+# ----------------------------------------------------------e40.py
+# 3.4 Binary numbers
+# ------------------------------------------------------------
+# Review the meaning of 1301 in base 10 (decimal)
+# 1301 = 1 * 10**3 + 3 * 10**2 + 0 * 10 + 1 * 10**0
+# ------------------------------------------------------------
+# Explain counting in binary numbers
+# 101010 base 2 = 1 * 2**5 + 1 * 2**3 + 1 * 2**1 = 42
+# Why does computer use binary?
+# -----------------------------------------------------------------
+# What is 10011 base 2 when represented in decimal?
+# 19
+print('10011 base 2 = ', int('10011', 2))
+#!/usr/bin/python3
+# ----------------------------------------------------------e41.py
+# 3.4 Floats in binary: Significant digits and exponent; decimal 0.1 in binary
+# ------------------------------------------------------------
+# Explain: 
+# decimal 2.432 is what pair? (signicant digits, exponent) =
+# (2432, -3  )   meaning 2432 * 10 ** -3
+# Explain precision
+# Explain rounded value
+# if we only allowed precision of 2, then
+# (24, -1)  would represent 2.432
+# decimal 0.625 is 5/8, so what is the binary pair (significant, exponent)?
+# (101, -11  )  5 * 2**-3
+# What about 1/10, using 4 significant bits or 5 significant bits
+# 4 signif bits: (0011, -101  ) = 3/32 = 0.09375
+# 5 signif bits: (011010    ,-1000       ) = 26/256 
+# (           )
+# 53 bits of precision has the following significant digits for 0.1
+# 11001100110011001100110011001100110011001100110011001
+# which results in
+# 0.100000000000000005551115123125782702118158340451015625
+# ------------------------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e42.py
+# 3.4 Floats    rounding, and tests for equality
+# ------------------------------------------------------------
+# round(x, numDigits) rounds x to numDigits after decimal point
+# ------------------------------------------------------------
+# round(2 ** 0.5, 3) is: _________
+# ------------------------------------------------------------
+# abs(x - y) < epsilon  is better than x == y
+# ----------------------------------------------------------
+# sometimes watch for accumulation of rounding errors.
+# ----------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e42.py
+# 3.5 Newton-Raphson algorithm to find roots of polynomial
+# ------------------------------------------------------------
+# finding the roots of a polynomial, like p(x) = 3x^2 + 4x - 7
+# then the derivative p'(x) = 6 x + 4
+# ------------------------------------------------------------
+# degree of polynomial is the largest degree of any term, so 2 above.
+# ------------------------------------------------------------
+# p(r) means the value of p when x = r
+# ------------------------------------------------------------
+# The root of the polynomial p is r where p(r) is 0
+# ------------------------------------------------------------
+# Finding square root of 24 is solving for root of p(x) = x^2 - 24 = 0
+# when  x^2 == 24 then x is the root of the polynomial
+# ------------------------------------------------------------
+# given a guess for the root, then
+# guess - p(guess) / p'(guess)   is a better guess
+#
+k = 124
+epsilon = 0.01
+def p(x) :
+    return x ** 2 - k
+def pprime(x) :
+    return 2 * x
+
+guess = k / 2
+while abs(p(guess)) > epsilon :
+    guess = guess - p(guess) / pprime(guess)
+print(guess, 'is close enough to the square root of ', k)
+#!/usr/bin/python3
+# ----------------------------------------------------------e44.py
+# 3.5 Newton-Raphson  or Newton method
+# ------------------------------------------------------------
+# Use the Newton-Raphson method to calculate the square root of 24
+# to the accuracy that abs(root ** 2 - 24) < epsilon = 0.01
+# ------------------------------------------------------------
+
+
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e45.py
+# 3.5 Newton-Raphson  or Newton method -- 3
+# ------------------------------------------------------------
+# Use the Newton-Raphson method to calculate the cube root of 24
+# to the accuracy that abs(root ** 3 - 24) < epsilon = 0.01
+#
+# p(x) = x**3 - k         where k is 24
+# p'(x) = 
+# if guess is g, next guess is g - p(g)/p'(g)
+#            which is:         
+# ------------------------------------------------------------
+# copy in the previous program for square root and modify it.
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e46.py
+# 3.5 Newton-Raphson  or Newton method  -- 4
+# ------------------------------------------------------------
+# Use the Newton-Raphson method to calculate the fourth root of 24
+# to the accuracy that abs(root ** 4 - 24) < epsilon = 0.01
+#
+# p(x) = x**4 - k         where k is 24
+# p'(x) = 4 * x ** 3
+# if guess is g, next guess is g - p(g)/p'(g)
+#            which is:         
+# ------------------------------------------------------------
+# Try to write the program yourself from scratch
+# 1. start with a guess
+# 2. run a while loop until the error gets small enough
+#    where you improve the guesses using g - p(g)/p'(g)
+# 3. print the answer
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e47.py
+# 3.5 Newton-Raphson  or Newton method -- 5
+# ------------------------------------------------------------
+# Use the Newton-Raphson method to calculate the fifth root of 24
+# to the accuracy that abs(root ** 5 - 24) < epsilon = 0.01
+#
+# p(x) = x**5 - k         where k is 24
+# p'(x) = 
+# if guess is g, next guess is g - p(g)/p'(g)
+#            which is:         
+# ------------------------------------------------------------
+# Try to write the program yourself from scratch
+# 1. start with a guess
+# 2. run a while loop until the error gets small enough
+#    where you improve the guesses using g - p(g)/p'(g)
+# 3. print the answer
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e48.py
+# 3.5 Newton-Raphson  or Newton method -- n
+# ------------------------------------------------------------
+# Use the Newton-Raphson method to calculate the nth root of 24
+# to the accuracy that abs(root ** n - 24) < epsilon = 0.01
+#
+# p(x) = x**n - k         where k is 24
+# p'(x) = n * x ** (n-1)
+# if guess is g, next guess is g - p(g)/p'(g)
+#            which is:         
+# ------------------------------------------------------------
+# Try to write the program yourself from scratch
+# 0. Read n from the user
+# 1. Make a guess
+# 2. Run a while loop until the error gets small enough
+#    where you improve the guesses using g - p(g)/p'(g)
+# 3. print the answer
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e49.py
+# Review: a problem from the TA (Tony Misic)
+# ------------------------------------------------------------
+'''
+Write a program that takes a value n from the user (using the function input()).
+Loop from 1 to n inclusively and for each iteration print out
+   'FIZZ' if the iteration is divisible by 3,
+   'BUZZ' if the iteration is divisible by 5,
+   'FIZZBUZZ' if the iteration is divisible by 3 and 5,
+   otherwise print the iteration.
+'''
+# -------------------------------------------------------------
+n = int(input('n = '))
+
+for i in range(1, n + 1) :
+    d3 = i % 3 == 0
+    d5 = i % 5 == 0
+    if d3 and d5 :
+        print('FIZZBUZZ', end = ' ')
+    elif d3 :
+        print('FIZZ', end = ' ')
+    elif d5 :
+        print('BUZZ', end = ' ')
+    else :
+        print(i, end = ' ')
+print()
+#!/usr/bin/python3
+# ----------------------------------------------------------e50.py
+# Review: a problem from the TA (Jae)
+# ------------------------------------------------------------
+# Question: Given any smaller and larger number 
+# count even and odd numbers in the range, inclusive,
+# using loop and if statement
+# ------------------------------------------------------------
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e51.py
+# Review: a problem from the TA (Tony Huynh)
+# ------------------------------------------------------------
+# Question: 
+#   Using a loop, print the sum of all integers
+#   between 0 and 50 (inclusive).
+# ------------------------------------------------------------
+
+
+
+
+
+
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e52.py
+# Review: a problem from the TA (Tony Huynh)
+# ------------------------------------------------------------
+# Question: 
+#   Using a loop, print the sum of all even integers
+#   between 0 and 50 (inclusive).
+# ------------------------------------------------------------
+
+
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e53.py
+# Chapter 4: Functions, scoping, abstraction
+# ------------------------------------------------------------
+# What we covered so far:
+# numbers, operators, assignments, if statements, loops, input/output
+# is enough to make the language Turing Complete
+# Yes
+# ------------------------------------------------------------
+# If a language is Turing Complete,
+# what can it do: it can compute anything that is computable
+# what can it not do: halting problem
+# ------------------------------------------------------------
+# Nevertheless, it is important to have functions, e.g., abs(), max()
+# Why?
+# 1. saves writing the code over and over
+# 2. breaks code into small modules or parts,
+#         makes your code more readable and writeable
+# 3. easier to fix bugs in one place
+# 4. local variables hide variables from the rest of the program
+# 5. the function can have parameters  sqrt(44)
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e54.py
+# Chapter 4: Functions: format and example, maxval()
+# ------------------------------------------------------------
+# def functionname(list of formal parameters) :
+#    body of function
+# -------------------------------------------------------------
+# Write the function maxval(x, y)
+# -------------------------------------------------------------
+def maxval(x, y) :
+    if x > y :
+        return x
+    else :
+        return y
+
+z = maxval(5, -103)
+print('z = maxval(5, -103)',  z)
+# -------------------------------------------------------------
+# What are the formal parameters:  x, y
+# What are the actual parameters:  5, -103
+# What are the arguments to the function: 5, -103
+# Function invocation: maxval(5, -103)
+# Calling the function:  invoking
+# maxval(3, 4) binds what to what? x to 3 and y to 4
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e55.py
+# Chapter 4: Functions: dynamics, example areaOfCircle()
+# ------------------------------------------------------------
+# Write a function to compute the area of a circle
+# -------------------------------------------------------------
+
+
+# -----------------------------------------------------------------
+# Talk about:
+# return statement:
+# 1. Can you use return in a loop?  Try it.
+# 2. A function call is an expression
+# 3. A function call has a value -- what is the value of areaOfCircle(3)?
+# -----------------------------------------------------------------

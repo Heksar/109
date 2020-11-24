@@ -1,0 +1,404 @@
+
+print('-------------------')
+#!/usr/bin/python3
+from math import sqrt
+# ----------------------------------------------------------e79.py
+# Chapter 4.5: Modules: from module import something
+#     show the two forms of import
+# ------------------------------------------------------------
+
+# use math.sqrt:  add all the squareroots of numbers from 1 to 100
+# and print the answer with 2 decimal places of accuracy.
+
+
+# ----------------------------------------------------
+
+print('-------------------')
+#!/usr/bin/python3
+# ----------------------------------------------------------e80.py
+# Chapter 4.6: Files: reading and writing
+# ------------------------------------------------------------
+# Explain file handle
+# Write the fibonacci numbers from 1 to 20 into a file called fib.txt
+# don't forget to close the file
+# import the fib(() from e77_fib.py
+# ----------------------------------------------------
+
+
+
+# ----------------------------------------------------
+# open the file fib.txt for reading
+# read the file fib.txt using:
+# for line in filehandle
+# ----------------------------------------------------
+
+
+
+# ----------------------------------------------------
+
+print('-------------------')
+#!/usr/bin/python3
+# ----------------------------------------------------------e81.py
+# Chapter 5: Structured Types, mutability, higer-order functions
+# So far we have the following object types:
+# int     scalar
+# float   scalar
+# str     structured
+# --------------------------------
+# scalar type means no accessible internal structure
+# structured type allows accessing length, index, slice
+# tuple -- is simple generalization of string
+# list
+# range -- not a type in python2
+# dict
+# ------------------------------------------------------------
+# Chapter 5.1: Tuples
+# ------------------------------------------------------------
+# tuple -- immutable, ordered sequence of elements
+# elements are any type
+# elements not necessarily all the same type
+# What does immutable mean?
+# What is an advantage of immutability?
+# ----------------------------------------------------
+# Make examples of tuples and print them.
+# ----------------------------------------------------
+# t1 empty tuple
+
+# t2 tuple with several elements of different type
+
+# t3 tuple with one element ... note, this one is special
+
+
+
+
+
+
+# ----------------------------------------------------
+
+print('-------------------')
+#!/usr/bin/python3
+# ----------------------------------------------------------e82.py
+# Chapter 5.1: Tuples and their operations
+# ------------------------------------------------------------
+# concatenation example
+# ----------------------------------------------------
+# repetition example
+# ----------------------------------------------------
+# indexing example
+# ----------------------------------------------------
+# slicing example
+# ----------------------------------------------------
+# tuple containing a tuple example
+# tuple is an object and elements of tuples are objects
+# everything in python is an object
+# ----------------------------------------------------
+
+
+
+
+
+
+
+# ----------------------------------------------------
+
+print('-------------------')
+#!/usr/bin/python3
+# ----------------------------------------------------------e83.py
+# Chapter 5.1: Tuples and their operations
+# ------------------------------------------------------------
+# Write a function that uses tuples and returns a tuple
+# (this is useful, since sometimes you want to return several things)
+# --------
+# Note that a for loop can iterate over elements of a tuple
+# --------
+# Note that the in operator works for membership in a tuple
+# ----------------------------------------------------
+def intersect(t1, t2) :
+    '''Assume t1, t2 are tuples.
+    Return the common elements'''
+    pass
+# ----------------------------------------------------
+# Would intersect(t1, t2) be the same as intersect(t2, t1)?
+# ----------------------------------------------------
+t1 = (9, 1, 2, 3, 3)
+t2 = (2, 4, 4, 9, 2)
+print(intersect(t1, t2))
+print(intersect(t2, t1))
+print('-------------------')
+# -----------------------------------------------------
+# modify so that the two results would have the same elements, same length
+# ------------------------------------------------------
+# modify your solution so that the two results produce the same tuple
+# ------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e84.py
+# Chapter 5.1: Tuples and their operations
+# ------------------------------------------------------------
+# Sequences in Python allow multiple assignment
+# The LHS length must equal the RHS length
+# ------------------------------------------------
+# Try it with a tuple and with a string
+# ------------------------------------------------
+
+#!/usr/bin/python3
+# ----------------------------------------------------------e85.py
+# Chapter 5.1: Tuples and their operations
+# ------------------------------------------------------------
+# Sequences in Python allow functions to return a fixed length sequence
+# ------------------------------------------------
+# Example of returning two things by a tuple
+# ------------------------------------------------
+def findextremedivisors(n1, n2) :
+    '''
+    Assumes n1, n2 are positive integers.
+    Returns tuple of smallest common divisor > 1 and 
+    largest common divisor >1.
+    If no common divisor > 1 then return (None, None)
+    '''
+    pass
+# -------------------------------------------------------
+# Try it out
+# -------------------------------------------------------
+print(5, 20, 'have extreme divisors', findextremedivisors(5, 20), 'expect ')
+print(1, 20, 'have extreme divisors', findextremedivisors(1, 20), 'expect ')
+print(10, 15, 'have extreme divisors', findextremedivisors(10, 15), 'expect ')
+print(10, 20, 'have extreme divisors', findextremedivisors(10, 20), 'expect ')
+print(20, 10, 'have extreme divisors', findextremedivisors(20, 10), 'expect ')
+print(30, 105, 'have extreme divisors', findextremedivisors(30, 105), 'expect ')
+#!/usr/bin/python3
+# ----------------------------------------------------------e86.py
+# Chapter 5.2: range(start, stop, increment) is immutable
+# ------------------------------------------------------------
+# range can be indexed, sliced, length
+# ------------------------------------------------
+# Example: index
+# ------------------------------------------------
+# Example: slice
+# ------------------------------------------------
+# Example: length
+# ------------------------------------------------
+# Example: try to mutate
+# ------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e87.py
+# Chapter 5.3: lists and mutability
+# ------------------------------------------------------------
+# Example regarding id and equality
+# ------------------------------------------------
+# Create lists A of evens, B of odds, C = [A, B], and D same directly
+# ------------------------------------------------
+# Check are C and D the equal by ==, since they look the same
+# ------------------------------------------------
+# Check if they have the same id()
+# ------------------------------------------------
+# Show how C changes when A changes
+# ------------------------------------------------
+# Note that C[0] and A are 'aliases' bound to the same object
+# ------------------------------------------------
+# Exercise: Make three aliases to the literal list [1, 3, 2]
+# ------------------------------------------------
+# Exercise: Make a thousand more aliases to that list
+# ------------------------------------------------
+# Show that the 1 in that list has the same id as 1 obtained in different ways
+# ------------------------------------------------
+# Note: mutability of is convenient but 'treacherous'
+# ------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e88.py
+# Chapter 5.3: lists and mutability
+# ------------------------------------------------------------
+# Show that for statement iterates over a list
+# Use a list that contains lists
+C = [1, 9, 2, ['red', 'blue', 'green'], 8, ['lego', [abs, int], 'cell phone']]
+# ------------------------------------------------
+# Exercise: Define a function printlist(L) that prints the list like
+# ------------------------
+# : 0
+# :: 1
+# ::: 2
+# :::: 3
+# ------------------------------------------------
+def printlist(L) :
+    print('----------------------------------')
+    pass
+
+print(C)
+printlist(C)
+# ------------------------------------------------
+# Exercise: define printlist2(L) so that if it comes to a list in the list
+#   then it prints the individual elements in a similar way
+# ------------------------------------------------
+def printlist2(L) :
+    print('----------------------------------')
+    pass
+print(C)
+printlist2(C)
+# 
+# ------------------------------------------------
+# Exercise: define printlist3(L) so that it carries the concept deeper
+# ------------------------------------------------
+def printlist3(L) :
+    print('----------------------------------')
+    pass
+print(C)
+printlist3(C)
+# 
+# ------------------------------------------------
+# 
+# ------------------------------------------------
+# 
+# ------------------------------------------------
+# 
+# ------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e89.py
+# Chapter 5.3: lists and mutability
+# ------------------------------------------------------------
+# Show that concatenation has no side effect.
+# ------------------------------------------------
+# Show that extend() has a side effect .. it mutates the list
+# although it is like concatenation in one way
+# ------------------------------------------------
+# Show that append() has a side effect .. it mutates the list
+# ------------------------------------------------
+# 
+# ------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e90.py
+# Chapter 5.3: lists and mutability
+# ------------------------------------------------------------
+# Showing some list operations
+# ------------------------------------------------
+L = [1, 2, 3]
+e = 9
+i = 2
+L.append(e)
+L.count(e)
+L.insert(i, e)
+# index gives the index of first occurrence, exception if none
+L.index(e)
+# remove removes the first occurrence, exception if none
+L.remove(e)
+L.pop(i)
+# defaults ot -1
+L.pop()
+L.sort()  # ascending
+L.reverse()
+# ------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e91.py
+# Chapter 5.3.1: lists and cloning
+# ------------------------------------------------------------
+# Exercise: write in a naive way the following function
+# i.e., looping through L1 while changing L1 (not a good idea)
+# because of a hidden counter used by the interpreter
+# ------------------------------------------------
+def removeDuplicates(L1, L2) :
+    '''
+    Assumes L1, L2 are lists.
+    Removes from L1 things that are in L2.
+    '''
+    pass
+A = [1, 2, 3, 4]
+B = [1, 2, 5, 6, 4]
+print('A begins as', A)
+print('now removing', B)
+removeDuplicates(A, B)
+print('A ends up as', A)
+print('-----------------------------')
+# ------------------------------------------------
+# Exercise: write in a better way the above function
+# i.e., looping through a clone of L1 while changing L1 
+# ------------------------------------------------
+def removeDups(L1, L2) :
+    '''
+    Assumes L1, L2 are lists.
+    Removes from L1 things that are in L2.
+    '''
+    pass
+# ------------------------------------------------
+# Exercise: regarding the same function, 
+# would the problem have been solved by looping through L2 while changing L1
+# ------------------------------------------------
+#!/usr/bin/python3
+import copy
+# ----------------------------------------------------------e92.py
+# Chapter 5.3.1: lists and cloning
+# ------------------------------------------------------------
+# How to clone
+# ------------------------------------------------
+# clone by slicing
+# ------------------------------------------------
+# clone by list()
+# ------------------------------------------------
+# not clone by alias
+# ------------------------------------------------
+# deep clone by copy.deepcopy()
+# after importing copy
+# ------------------------------------------------
+M = ['red', 'green', 'blue']
+L = [1, 2, 3, M]
+N = L[:]
+P = copy.deepcopy(L)
+print(L, id(L))
+print(N, id(N))
+print(M, id(M))
+print('L[3]:', id(L[3]))
+print('N[3]:', id(N[3]))
+print('P[3]:', id(P[3]))
+#!/usr/bin/python3
+# ----------------------------------------------------------e93.py
+# Chapter 5.3.2: list comprehension
+# concise way to make a list
+# ------------------------------------------------------------
+# Exercise: make a list of squares of even values from 0 to 20
+# ------------------------------------------------------------
+
+# ------------------------------------------------------------
+# Do the same with list comprehension
+# -------------------------------------------------------------
+
+
+# ------------------------------------------------------------
+# Do the the list comprehension taking skipping elements that are not int
+# -------------------------------------------------------------
+M = [2, 4, 'six', 8.0, 10]
+
+
+# ------------------------------------------------------------
+# Show two ways to make a list of 50 0's
+# -------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e94.py
+# Chapter 5.4 Functions as objects
+# ------------------------------------------------------------
+# What are objects? 
+# ------------------------------------------------------------
+# Name some objects
+# ------------------------------------------------------------
+# What can one do with an object?
+# assign it to a variable  (i.e., bind the variable to the object)
+# argument ... object can be an argument to a function
+# type     ... type(object)
+# expression ... put it in an expression
+# element    ... put it in a tuple or list
+# ------------------------------------------------------------
+# Exercise:
+# -------------------------------------------------------------
+def apply(f, L) :
+    '''
+    Assume f is a function and L is a list.
+    Mutate L by applying f to each of its elements.
+    '''
+    pass
+# ------------------------------------------------------------
+# Try it out
+L = [1, -2, 3, -5]
+apply(abs, L)
+print('after applying abs to L, L is: ', L)
+# ------------------------------------------------------------
+# Exercise: do the same without using higher order programming
+# -------------------------------------------------------------
+# Use apply with fact, fib, int, str to see the advantage
+# ------------------------------------------------------------
+
