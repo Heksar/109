@@ -1,0 +1,305 @@
+#!/usr/bin/python3
+from matrices import *
+# ---------------------------------------------------------e114_2Dsamerow
+# Two-dimensional arrays: 
+# --------------------------------------------------------------
+# --------------------------------------------------------------
+# Determine if any two rows are identical in the matrix
+# --------------------------------------------------------------
+def equalrows(matrix) :
+    '''
+    Assume that matrix is a two dimensional array of numbers.
+    Returns True if there are two rows that are identical in matrix
+      False otherwise
+    '''
+    for i in range(len(matrix)) :
+        for j in range(i + 1, len(matrix)) :
+            if matrix[i] == matrix[j] :
+                return True
+    return False
+    pass
+# --------------------------------------------------------------
+# Try it on matrix1 and matrix2
+# --------------------------------------------------------------
+for matrix in matrices :
+    printmx(matrix)
+    print('It is {} that the above matrix has 2 identical rows.'.format(equalrows(matrix)))
+pass
+
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+from matrices import *
+# -------------------------------------------------------e115_2Dsamecol
+# Two-dimensional arrays: 
+# --------------------------------------------------------------
+
+# --------------------------------------------------------------
+# Answer if any two columns are identical in the matrix
+# --------------------------------------------------------------
+def equalcols(matrix) :
+    '''
+    Assume that matrix is a rectangular two dimensional array of numbers.
+    Returns True if there are two rows that are identical in matrix
+      False otherwise
+    '''
+    for j1 in range(len(matrix[0])) :
+        for j2 in range(j1 + 1, len(matrix[0])) :
+            allsame = True
+            for i in range(len(matrix)) :
+                if matrix[i][j1] != matrix[i][j2] :
+                    allsame = False
+                    break
+            if allsame :
+                return True
+    return False
+    pass
+# --------------------------------------------------------------
+# method using transpose
+# pretend we have equalrows() and transpose() imported
+# --------------------------------------------------------------
+def equalcols2(matrix) :
+    trans = transpose(matrix)
+    return equalrows(trans)
+# ----------------------------------------------------------
+# Try it on matrix1 and matrix2
+# --------------------------------------------------------------
+for matrix in matrices :
+    printmx(matrix)
+    print('It is {} that the above matrix has 2 identical rows.'.format(equalcols(matrix)))
+
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+from matrices import *
+# ---------------------------------------------------------e116_2Dtranspose
+# --------------------------------------------------------------
+# Make a transpose matrix
+# --------------------------------------------------------------
+def transpose(matrix) :
+    '''
+    Assume that matrix is a rectangular two dimensional array of numbers.
+    Returns a transpose of the matrix
+    '''
+    m = len(matrix)
+    n = len(matrix[0])
+    # -----------------------
+    # make trans be n x m matrix of zeroes
+    # -----------------------
+    trans = [[0 for j in range(m)] for i in range(n)]
+    for i in range(n) :
+        for j in range(m) :
+            trans[i][j] = matrix[j][i]
+    return trans
+    pass
+# ----------------------------------------------------------
+# Try it on matrix1 and matrix2
+# --------------------------------------------------------------
+for matrix in matrices :
+    printmx(matrix)
+    print('The transpose of the above matrix is:')
+    printmx(transpose(matrix))
+
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+# ----------------------------------------------------------e117_exception
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# Basic theory:
+# Exception in Python and Java a construct for dealing with errors
+# --------------------------------------------------------------
+# Name five common exceptions:
+# IndexError, NameError, TypeError, ValueError, ZeroDivisionError
+# --------------------------------------------------------------
+# and show examples of how they can be raised:
+# --------------------------------------------------------------
+# [1, 2, 3][3] ________IndexError
+# a = b    before b has been bound to a value  __NameError
+# int(int) _TypeError
+# int('abc') __ValueError
+# a = 5 / 0 __ZeroDivisionError
+# --------------------------------------------------------------
+# Why have exceptions: _to have exception handling
+# Why have exception handling: _to deal with errors without crashing
+# --------------------------------------------------------------
+# Does a programming language (PL) need exceptions? yes or no
+# --------------------------------------------------------------
+# Does a programming language need to offer exception handling: no, C doesn't
+try :
+    print(5/0)
+except ZeroDivisionError :
+    print('blue')
+print('hello')
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+import random
+# ------------------------------------------------------------e118_tryZDE
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# Simulate rolling a die 5 times and take guesses for the outcomes
+# Print the ratio of successes to failures,
+# but watch out for division by 0
+# --------------------------------------------------------------
+# Pseudocode
+# --------------------------------------------------------------
+# 0. initialize the guesses, say to 6, 1, 5, 1, 5        #19
+# 1. initialize countright and countwrong
+# 2. loop 5 times
+# 3. roll die
+# 4. compare with guess
+# 5. change countright or countwrong
+# 6. try block to
+# 7. evaluate the ratio
+# 8. print the ratio
+# 9. print done try
+# 10. except if there is a zero division error
+# 11. print no failures, so no ratio
+# 12. print done except
+# --------------------------------------------------------------
+random.seed(19)
+guesses = [6, 1, 5, 1, 5]
+countright = countwrong = 0
+for i in range(5) :
+    die = random.randrange(1, 7)
+    guess = guesses[i]
+    if guess == die :
+        countright += 1
+    else :
+        countwrong += 1
+try :
+    ratio = countright / countwrong
+    print('right to wrong ratio = ', ratio)
+    print('done the try block')
+except ZeroDivisionError :
+#except NameError :
+#except :
+    print('no failures so no valid ratio')
+    print('done the except block')
+print('done the program')
+pass
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+# ------------------------------------------------------e119_tryVEwrong
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# a) Use exception handling to do an input loop
+# where you ask for an integer and then square it.
+# --------------------------------------------------------------
+# Pseudocode (a variation that does not work properly)
+# --------------------------------------------------------------
+# 1. Set up a try block
+# 2. While forever
+# 3. Get from a user, an input value that should be an integer
+# 4. convert the string input value to an integer
+# 5. print the square of the integer
+# 6. break out of the forever loop since we just want to square input once
+# 7. Set up an except block that handles a ValueError exception
+# 8. Print a message that says that was not an integer you gave
+pass
+# --------------------------------------------------------------
+# Try it out
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+# -------------------------------------------------------e120_tryVEright
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# a) Use exception handling to do an input loop
+# where you ask for an integer and then square it.
+# --------------------------------------------------------------
+# Pseudocode
+# --------------------------------------------------------------
+# 1. While forever
+# 2. Get from a user, an input value that should be an integer
+# 3. Set up a try block
+# 4. convert the string input value to an integer
+# 5. print the square of the integer
+# 6. break out of the forever loop since we just want to do it once
+# 7. Set up an except block that handles a ValueError exception
+# 8. Print a message that says that was not an integer you gave
+pass
+# --------------------------------------------------------------
+# Try it out
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+# ---------------------------------------------------------e121_readint
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# The code on the previous page is a bit bulky if you have to
+# read an integer in several places.
+# 
+# Convert it to a function that
+# a) Use exception handling to do an input loop
+# where you ask for an integer repeatedly until you get it, then return it
+# --------------------------------------------------------------
+def readint() :
+    # 1. while forever
+    # 2. ask the user for an integer
+    # 3. set up a try block
+    # 4. convert the input value to an integer
+    # 5. return the integer
+    # 6. set up an except block for a ValueError exception
+    # 7. tell the user that that was not an integer
+    while True :
+        value = input("Integer please: ")
+        try :
+            value = int(value)
+            return value
+        except ValueError :
+            print(value, "is not an integer")
+    pass
+# --------------------------------------------------------------
+# Try it out:
+# --------------------------------------------------------------
+a = readint()
+print(a, 'squared is', a ** 2)
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
+#!/usr/bin/python3
+import math
+# -------------------------------------------------------e122_readvalue
+# Chapter 7: Exceptions
+# --------------------------------------------------------------
+# The code in e122 can be generalized to any type
+# by using a POLYMORPHIC function 
+# which is possible in this example because 
+# types are FIRST CLASS OBJECTS in Python
+# --------------------------------------------------------------
+def readvalue(valueType, requestMsg, errorMsg) :
+    # 1. while forever
+    # 2. ask the user for input using the request message
+    # 3. set up a try block
+    # 4. convert the input string to type valueType
+    # 5. return the converted value (which ends the forever loop)
+    # 6. set up an except block for a ValueError exception
+    # 7. print the error message (after which control goes back to 1)
+    while True :
+        value = input(requestMsg)
+        try :
+            value = valueType(value)
+            return value
+        except ValueError :
+            print(errorMsg)
+    pass
+# --------------------------------------------------------------
+# Try it out:
+# --------------------------------------------------------------
+a = readvalue(int, 'Provide an integer: ', 'is not an integer')
+print(a, 'squared is', a ** 2)
+a = readvalue(float, 'Provide a floating point number: ', 'is not a float')
+print(a, 'the ceiling is', math.ceil(a))
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
